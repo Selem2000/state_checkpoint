@@ -10,12 +10,17 @@ export class App extends Component {
       profession: "web devolepper",
     },
     show: false,
+    timeInterval: 0,
   };
 
   toggler = () => {
     return this.setState({ show: !this.state.show });
   };
-
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ timeInterval: this.state.timeInterval + 1 });
+    }, 1000);
+  }
   render() {
     return (
       <div className="main">
@@ -30,6 +35,7 @@ export class App extends Component {
         ) : (
           ""
         )}
+        <h2>{this.state.timeInterval}</h2>
       </div>
     );
   }
